@@ -7,7 +7,7 @@ import plotly.express as px
 import pandas as pd
 import pickle
 from styles import *
-
+from page_1 import *
 with open(r'data\consolidado_datos.pickle', 'rb') as f:
     loaded_obj = pickle.load(f)
 
@@ -77,7 +77,7 @@ app.layout = dbc.Container([
         dbc.Col(
             html.Div(id="page-content", style=CONTENT_STYLE),
             width=10,
-            align="center" 
+            #align="center" 
         ),
     ], style={"height": "100%"}),
 
@@ -87,16 +87,14 @@ fluid=True,
 style=CONTAINER_STYLE
 )
 
-
+app1
 
 # Callback section: connecting the components
 # ************************************************************************
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
-
-
 def render_page_content(pathname):
     if pathname == "/":
-        return html.P("This is the content of the home page!")
+        return html.P(app1.layout)
     elif pathname == "/page-1":
         return html.P("This is the content of page 1. Yay!")
     elif pathname == "/page-2":
@@ -109,6 +107,9 @@ def render_page_content(pathname):
             html.P(f"The pathname {pathname} was not recognised..."),
         ]
     )
+
+
+    
 
 
 if __name__ == "__main__":
