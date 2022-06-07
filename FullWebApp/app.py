@@ -7,6 +7,7 @@ import plotly.express as px
 import pandas as pd
 import pickle
 from styles import *
+
 from page_1 import page1
 from page_2 import page2
 from home_page import homepage
@@ -92,7 +93,7 @@ app.layout = dbc.Container([
         dbc.Col(
             html.Div(id="page-content", style=CONTENT_STYLE),
             width=10,
-            align="center" 
+            #align="center" 
         ),
     ], style={"height": "100%"}),
 
@@ -102,13 +103,11 @@ fluid=True,
 style=CONTAINER_STYLE
 )
 
-
+app1
 
 # Callback section: connecting the components
 # ************************************************************************
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
-
-
 def render_page_content(pathname):
     if pathname == "/":
         return home_page()
@@ -127,6 +126,9 @@ def render_page_content(pathname):
 
     
 
+
+
+    
 
 
 if __name__ == "__main__":
