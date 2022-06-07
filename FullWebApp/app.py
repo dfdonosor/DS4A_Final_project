@@ -7,14 +7,29 @@ import plotly.express as px
 import pandas as pd
 import pickle
 from styles import *
+from page_1 import page1
+from page_2 import page2
+from home_page import homepage
 
-with open(r'data\consolidado_datos.pickle', 'rb') as f:
-    loaded_obj = pickle.load(f)
 
-print(loaded_obj)
+#with open(r'data/consolidado_datos.pickle', 'rb') as f:
+#    loaded_obj = pickle.load(f)
+
+#print(loaded_obj)
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], meta_tags=[{'name': 'viewport',
                             'content': 'width=device-width, initial-scale=1.0'}])
+def home_page():
+        page = homepage()
+        return page.render()
+
+def page_1():
+        page = page1()
+        return page.render()
+
+def page_2():
+        page = page2()
+        return page.render()
 
 sidebar = html.Div(
     [
@@ -96,11 +111,11 @@ style=CONTAINER_STYLE
 
 def render_page_content(pathname):
     if pathname == "/":
-        return html.P("This is the content of the home page!")
+        return home_page()
     elif pathname == "/page-1":
-        return html.P("This is the content of page 1. Yay!")
+        return page_1()
     elif pathname == "/page-2":
-        return html.P("Oh cool, this is page 2!")
+        return page_2()
     # If the user tries to reach a different page, return a 404 message
     return dbc.Jumbotron(
         [
@@ -109,6 +124,9 @@ def render_page_content(pathname):
             html.P(f"The pathname {pathname} was not recognised..."),
         ]
     )
+
+    
+
 
 
 if __name__ == "__main__":
