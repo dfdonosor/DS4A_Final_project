@@ -46,10 +46,10 @@ sidebar = html.Div(
                 dbc.NavLink("Page 2", href="/page-2", active="exact"),
             ],
             vertical=True,
-            pills=True,
+            pills=True
         ),
     ],
-    style=SIDEBAR_STYLE,
+    style=SIDEBAR_STYLE
     )
 
 app.layout = dbc.Container([
@@ -87,13 +87,14 @@ app.layout = dbc.Container([
 
     dbc.Row([dbc.Col(
             sidebar,
-            width=2
+            width=2,
+            style={"padding" : "0px"},
         ),
 
         dbc.Col(
             html.Div(id="page-content", style=CONTENT_STYLE),
             width=10,
-            #align="center" 
+            style={"padding": "0px", "height": "100%"}
         ),
     ], style={"height": "100%"}),
 
@@ -103,7 +104,7 @@ fluid=True,
 style=CONTAINER_STYLE
 )
 
-app1
+#app1
 
 # Callback section: connecting the components
 # ************************************************************************
