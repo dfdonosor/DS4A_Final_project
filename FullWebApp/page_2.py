@@ -12,16 +12,43 @@ page1 = dbc.Container([
 
     dbc.Row(
         [dbc.Col(
-                html.Div(
-                style={"padding" : "0px", "height" : "100%", "width" : "100%", "background-color" : "blue"}
+                html.Div([
+
+                        dbc.Row([
+                                html.H4("Input data for regression or classification modeling")
+                        ],
+                        style={"height":"10%", "width":"100%", "padding" : "1rem 1rem 1rem 1rem", "border" : "1px solid green"}
+                        ),
+
+                        dbc.Row([
+                                
+                        ]
+                        ,
+                        style={"height":"90%", "width":"100%", "padding" : "1rem 1rem 1rem 1rem"}
+                        ),
+                ],
+                style={"padding" : "0px", "height" : "100%", "width" : "100%", "border" : "1px solid blue"}
                 ),
                 style={"padding" : "0px", "height" : "100%", "width" : "100%"}
             
         ),
 
         dbc.Col(
-                html.Div(
-                style={"padding" : "0px", "height" : "100%", "width" : "100%", "background-color" : "red"}
+                html.Div([
+
+                        dbc.Row([
+                                html.H4("Estimated score result after modeling")
+                        ],
+                        style={"height":"10%", "width":"100%", "padding" : "1rem 1rem 1rem 1rem", "border" : "1px solid green"}
+                        ),
+
+                        dbc.Row([
+                                
+                        ]
+                        ,
+                        style={"height":"90%", "width":"100%", "padding" : "1rem 1rem 1rem 1rem"}
+                        ),
+                ],
                 ),
                 style={"padding" : "0px", "height" : "100%", "width" : "100%"}
 
@@ -29,21 +56,47 @@ page1 = dbc.Container([
         
         ],
         className="border border-primary",
-        style={"padding" : "0px", "height" : "50%", "margin-left" : "auto", "margin-right" : "auto"}
+        style={"padding" : "0px", "height" : "45%", "margin-left" : "auto", "margin-right" : "auto"}
     ),
 
     dbc.Row(
         [dbc.Col(
-                html.Div(
-                style={"padding" : "0px", "height" : "100%", "width" : "100%", "background-color" : "red"}
+                html.Div([
+                        dbc.Row([
+                                html.H4("Relationships between public services and ICFES Score")
+                        ],
+                        style={"height":"10%", "width":"100%", "padding" : "1rem 1rem 1rem 1rem", "border" : "1px solid green"}
+                        ),
+
+                        dbc.Row([
+                                
+                        ]
+                        ,
+                        style={"height":"90%", "width":"100%", "padding" : "1rem 1rem 1rem 1rem"}
+                        ),
+                ],
+                style={"padding" : "0px", "height" : "100%", "width" : "100%", "border" : "1px solid red"}
                 ),
                 style={"padding" : "0px", "height" : "100%", "width" : "100%"}
             
         ),
 
         dbc.Col(
-                html.Div(
-                style={"padding" : "0px", "height" : "100%", "width" : "100%", "background-color" : "blue"}
+                html.Div([
+                        dbc.Row([
+                                html.H4("Relationships between public services and ICFES Score")
+                        ],
+                        style={"height":"10%", "width":"100%", "padding" : "1rem 1rem 1rem 1rem", "border" : "1px solid green"}
+                        ),
+
+                        dbc.Row([
+                                
+                        ]
+                        ,
+                        style={"height":"90%", "width":"100%", "padding" : "1rem 1rem 1rem 1rem"}
+                        ),
+                ],
+                style={"padding" : "0px", "height" : "100%", "width" : "100%", "border" : "1px solid blue"}
                 ),
                 style={"padding" : "0px", "height" : "100%", "width" : "100%"}
 
@@ -51,7 +104,7 @@ page1 = dbc.Container([
         
         ],
         className="border border-primary",
-        style={"padding" : "0px", "height" : "50%", "margin-left" : "auto", "margin-right" : "auto"}
+        style={"padding" : "0px", "height" : "55%", "margin-left" : "auto", "margin-right" : "auto"}
     )
     
     

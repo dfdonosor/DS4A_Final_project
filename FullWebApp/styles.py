@@ -28,6 +28,5 @@ SIDEBAR_STYLE = {
 # add some padding.
 CONTENT_STYLE = {
     "padding": "0px",
-    "height": "100%",
-    "background-color": "black"
+    "height": "100%"
 } 
