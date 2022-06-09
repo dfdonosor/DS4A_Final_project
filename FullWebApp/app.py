@@ -7,6 +7,7 @@ import plotly.express as px
 import pandas as pd
 import pickle
 from styles import *
+
 from page_1 import page1
 from page_2 import page2
 from home_page import homepage
@@ -45,10 +46,12 @@ sidebar = html.Div(
                 dbc.NavLink("Page 2", href="/page-2", active="exact"),
             ],
             vertical=True,
+
             pills=True,
         )
+
     ],
-    style=SIDEBAR_STYLE,
+    style=SIDEBAR_STYLE
     )
 
 app.layout = dbc.Container([
@@ -86,14 +89,17 @@ app.layout = dbc.Container([
 
     dbc.Row([dbc.Col(
             sidebar,
-            width=2
+            width=2,
+            style={"padding" : "0px"},
         ),
 
         dbc.Col(
+
             html.Div(id="page-content"),
             
             align="center" 
         )
+
     ], style={"height": "100%"}),
 
     
@@ -102,13 +108,11 @@ fluid=True,
 style=CONTAINER_STYLE
 )
 
-
+#app1
 
 # Callback section: connecting the components
 # ************************************************************************
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
-
-
 def render_page_content(pathname):
     if pathname == "/":
         return home_page()
@@ -127,6 +131,9 @@ def render_page_content(pathname):
 
     
 
+
+
+    
 
 
 if __name__ == "__main__":
