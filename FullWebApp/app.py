@@ -46,8 +46,10 @@ sidebar = html.Div(
                 dbc.NavLink("Page 2", href="/page-2", active="exact"),
             ],
             vertical=True,
-            pills=True
-        ),
+
+            pills=True,
+        )
+
     ],
     style=SIDEBAR_STYLE
     )
@@ -92,10 +94,12 @@ app.layout = dbc.Container([
         ),
 
         dbc.Col(
-            html.Div(id="page-content", style=CONTENT_STYLE),
-            width=10,
-            style={"padding": "0px", "height": "100%"}
-        ),
+
+            html.Div(id="page-content"),
+            
+            align="center" 
+        )
+
     ], style={"height": "100%"}),
 
     
