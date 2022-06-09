@@ -46,7 +46,7 @@ sidebar = html.Div(
             ],
             vertical=True,
             pills=True,
-        ),
+        )
     ],
     style=SIDEBAR_STYLE,
     )
@@ -90,10 +90,10 @@ app.layout = dbc.Container([
         ),
 
         dbc.Col(
-            html.Div(id="page-content", style=CONTENT_STYLE),
-            width=10,
+            html.Div(id="page-content"),
+            
             align="center" 
-        ),
+        )
     ], style={"height": "100%"}),
 
     
