@@ -6,8 +6,6 @@ import dash_bootstrap_components as dbc
 import matplotlib.pyplot as plt
 import plotly.express as px
 import pandas as pd
-import pickle
-from styles import *
 
 class page1:
 

@@ -1,8 +1,22 @@
 .nav-pills .nav-link.active {
-    color: white;
+    color: whitesmoke;
     background-color: #2E487E;
 }
 
 .rc-slider-track {
     background-color: #2E487E;
-  }
+}
+
+.app-title{
+    background-color: #2E487E;
+    color: whitesmoke;
+}
+
+.button-app {
+    background-color: #2E487E !important;
+    color: whitesmoke;
+    width: 50%;
+	height: 100%;
+    border-radius: 1vh;
+}
+

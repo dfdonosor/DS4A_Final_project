@@ -3,10 +3,6 @@ os.chdir(os.path.dirname(os.path.abspath(__file__))) #Ubicamos el interprete en 
 from dash import Dash, callback, dcc, html, dash_table, Input, Output, State, MATCH, ALL
 import dash_bootstrap_components as dbc
 import matplotlib.pyplot as plt
-import plotly.express as px
-import pandas as pd
-import pickle
-from styles import *
 
 class homepage:
         

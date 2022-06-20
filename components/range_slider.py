@@ -1,0 +1,21 @@
+from typing import Tuple
+from dash import html, dcc 
+
+class RangerSlider:
+    def __init__(self, title : str, range_slider : Tuple):
+        self.title = title
+        self.range_slider = range_slider
+
+    def display(self):
+        min_value = self.range_slider[0]
+        max_value = self.range_slider[1]
+
+        layout =  html.Div([
+                        html.P(self.title),
+                        dcc.RangeSlider(min = min_value, max = max_value, value=[min_value, max_value], id='my-range-slider', tooltip={"placement": "bottom", "always_visible": True}),
+                        html.Div(id='output-container-range-slider'), 
+                        ], 
+                        className='align-middle  p-1 m-1 shadow bg-body rounded"',
+                        )
+        return layout
+
