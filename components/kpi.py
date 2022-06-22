@@ -8,16 +8,10 @@ class KPI:
         self.label = label
 
     def display(self):
-        layout = dbc.Card(
-    [
-        dbc.CardBody(
-            [
-                html.H4(self.label, className="card-title"),
-                html.P(self.kpi, className="card-text"),
-            ]
-        ),
-    ],
-    className="align-items-center",
-    style={"width": "18rem"},
-)
+        layout = dbc.Card([
+            dbc.CardHeader(self.label, className="card-title m-0 p-2 w-100 text-center fs-2 fw-bold"),
+            dbc.CardBody(self.kpi, className="card-text m-0 p-2 w-100 text-center fs-1 fw-bold"),
+        ],
+        className="align-items-center h-75 w-50"
+        )
         return layout

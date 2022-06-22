@@ -27,9 +27,11 @@ def register_callbacks(app):
             ]
         )
     
-    @app.callback(Output('output-container-range-slider', 'children'),[Input('my-range-slider', 'value')])
+    @app.callback(
+        Output('output-container-range-slider', 'children'),
+        Input('range-slider_1', 'value'))
     def update_output(value):
-        return 'You have selected "{}"'.format(value)
+        print('You have selected "{}"'.format(value))
 
     @app.callback(
     Output("example-output", "children"), [Input("example-button", "n_clicks")])
