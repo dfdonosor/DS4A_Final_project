@@ -26,7 +26,7 @@ range_slider_3 = RangerSlider("Indicator", "range-slider_3", (0, 20))
 description_button_result = DescriptionElement("Global ICFES score")
 button_result = Button("Estimated result", "button_result")
 
-kpi_result = KPI(50, "Result")
+kpi_result = KPI(50, "kpi_result_model", "Result")
 
 r1_c1 = dbc.Col([
                 dbc.Row(
@@ -164,14 +164,16 @@ page = dbc.Container([
                 r1_c1,
                 r1_c2
         ],
-        className="m-0 p-0 border border-primary h-50"
+        className="m-0 p-0 border border-primary",
+        style = {"height" : "40%"}
         ),
 
         dbc.Row([
                 r2_c1,
                 r2_c2
         ],
-        className="m-0 p-0 border border-success h-50",
+        className="m-0 p-0 border border-success h",
+        style = {"height" : "60%"}
         )
 ], 
 fluid=True,
