@@ -28,6 +28,11 @@ button_result = Button("Estimated result", "button_result")
 
 kpi_result = KPI(50, "kpi_result_model", "Result")
 
+kpi_relation_1 = KPI(50, "kpi_relation_model_1", "Indicator 1", "s")
+kpi_relation_2 = KPI(50, "kpi_relation_model_2", "Indicator 2", "s")
+kpi_relation_3 = KPI(50, "kpi_relation_model_3", "Indicator 3", "s")
+kpi_relation_4 = KPI(50, "kpi_relation_model_4", "Indicator 4", "s")
+
 r1_c1 = dbc.Col([
                 dbc.Row(
                         title_1.display(),
@@ -135,27 +140,71 @@ r1_c2 = dbc.Col([
 r2_c1 = dbc.Col([
         dbc.Row(
                 title_3.display(),
-                className="m-0 p-0"
+                className="m-0 p-0 border border-primary",
+                style = {"height" : "10%"}
         ),
 
         dbc.Row([
+                        dbc.Col([
+                                kpi_relation_1.display()
+                        ],
+                        width=3,
+                        ),
 
-        ]
-        ),    
-]   
+                        dbc.Col([
+                               kpi_relation_2.display()
+                        ],
+                        width=3,
+                        ),
+
+                        dbc.Col([
+                                kpi_relation_3.display()
+                        ],
+                        width=3,
+                        ),
+
+                        dbc.Col([
+                               kpi_relation_4.display()
+                        ],
+                        width=3,
+                        ),
+                ], 
+                className='p-0 m-0 border border-primary',
+                style = {"height" : "20%"}
+                ),
+                
+
+                dbc.Row([
+                        
+                ], 
+                className='p-0 m-0 border border-primary',
+                style = {"height" : "50%"}
+                ),
+
+                dbc.Row([
+                        html.H4('"Description of the services that most affect the ICFES results."', id="description_service_most_relevant", className="text-center fst-italic")
+                ], 
+                className='p-0 m-0 border border-primary',
+                style = {"height" : "20%"}
+                ),
+  
+], 
+className="m-0 p-0 mh-100 border border-primary"   
 )
 
 r2_c2 = dbc.Col([
         dbc.Row(
         title_4.display(),
-        className="m-0 p-0"
+        className="m-0 p-0 border border-primary",
+        style = {"height" : "10%"}
         ),
         
         dbc.Row([
 
                 ]
                 ),
-]
+], 
+className="m-0 p-0 mh-100 border border-primary" 
 )
 
 page = dbc.Container([
