@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import pandas as pd
 from components.sub_title import SubTitle
-from components.range_slider import RangerSlider
+from components.slider import Slider
 from components.description_element import DescriptionElement
 from components.button import Button 
 from components.kpi import KPI
@@ -19,9 +19,9 @@ description_range_slider_1 = DescriptionElement("Public service indicator x1")
 description_range_slider_2 = DescriptionElement("Public service indicator x2")
 description_range_slider_3 = DescriptionElement("Other important indicator")
 
-range_slider_1 = RangerSlider("Indicator", "range-slider_1", (0, 20))
-range_slider_2 = RangerSlider("Indicator", "range-slider_2", (0, 20))
-range_slider_3 = RangerSlider("Indicator", "range-slider_3", (0, 20))
+range_slider_1 = Slider("Indicator", "range-slider_1", (0, 20))
+range_slider_2 = Slider("Indicator", "range-slider_2", (0, 20))
+range_slider_3 = Slider("Indicator", "range-slider_3", (0, 20))
 
 description_button_result = DescriptionElement("Global ICFES score")
 button_result = Button("Estimated result", "button_result")
@@ -36,7 +36,7 @@ kpi_relation_4 = KPI(50, "kpi_relation_model_4", "Indicator 4", "s")
 r1_c1 = dbc.Col([
                 dbc.Row(
                         title_1.display(),
-                        className="m-0 p-0 border border-primary",
+                        className="m-0 p-0",
                         style = {"height" : "10%"}
                 ),
 
@@ -54,7 +54,7 @@ r1_c1 = dbc.Col([
                         width=6,
                         ),
                 ], 
-                className='p-0 m-0 border border-primary',
+                className='p-0 m-0',
                 style = {"height" : "30%"}
                 ),
                 
@@ -72,7 +72,7 @@ r1_c1 = dbc.Col([
                                 width=6,
                                 ),
                 ], 
-                className='p-0 m-0 border border-primary',
+                className='p-0 m-0',
                 style = {"height" : "30%"}
                 ),
 
@@ -89,18 +89,18 @@ r1_c1 = dbc.Col([
                         width=6,
                         ),
                 ], 
-                className='p-0 m-0 border border-primary',
+                className='p-0 m-0',
                 style = {"height" : "30%"}
                 ),
 
         ],
-        className='p-0 m-0 border border-primary h-100'
+        className='p-0 m-0 h-100'
         )           
 
 r1_c2 = dbc.Col([
                 dbc.Row(
                         title_2.display(),
-                        className="m-0 p-0 align-items-center border border-primary",
+                        className="m-0 p-0 align-items-center",
                         style = {"height" : "10%"}
                 ),
 
@@ -115,11 +115,11 @@ r1_c2 = dbc.Col([
                                 button_result.display()
                         ],
                         width=6,
-                        className='p-2 m-0 border border-primary'
+                        className='p-2 m-0'
                         ),
 
                         ], 
-                        className='p-0 m-0 align-items-center border border-primary',
+                        className='p-0 m-0 align-items-center',
                         style = {"height" : "50%"}
                         ),
 
@@ -128,19 +128,19 @@ r1_c2 = dbc.Col([
                                 kpi_result.display()
                                 ],
                                 width=12,
-                                className="d-flex justify-content-center align-items-center border border-primary h-100")
+                                className="d-flex justify-content-center align-items-center h-100")
                         ], 
-                        className='p-0 m-0 align-items-center border border-primary', 
+                        className='p-0 m-0 align-items-center', 
                         justify="center",
                         style = {"height" : "40%"})
         ], 
-        className="m-0 p-0 mh-100 border border-primary"
+        className="m-0 p-0 mh-100"
         )
 
 r2_c1 = dbc.Col([
         dbc.Row(
                 title_3.display(),
-                className="m-0 p-0 border border-primary",
+                className="m-0 p-0",
                 style = {"height" : "10%"}
         ),
 
@@ -169,7 +169,7 @@ r2_c1 = dbc.Col([
                         width=3,
                         ),
                 ], 
-                className='p-0 m-0 border border-primary',
+                className='p-0 m-0',
                 style = {"height" : "20%"}
                 ),
                 
@@ -177,25 +177,25 @@ r2_c1 = dbc.Col([
                 dbc.Row([
                         
                 ], 
-                className='p-0 m-0 border border-primary',
+                className='p-0 m-0',
                 style = {"height" : "50%"}
                 ),
 
                 dbc.Row([
                         html.H4('"Description of the services that most affect the ICFES results."', id="description_service_most_relevant", className="text-center fst-italic")
                 ], 
-                className='p-0 m-0 border border-primary',
+                className='p-0 m-0',
                 style = {"height" : "20%"}
                 ),
   
 ], 
-className="m-0 p-0 mh-100 border border-primary"   
+className="m-0 p-0 mh-100"   
 )
 
 r2_c2 = dbc.Col([
         dbc.Row(
         title_4.display(),
-        className="m-0 p-0 border border-primary",
+        className="m-0 p-0",
         style = {"height" : "10%"}
         ),
         
@@ -204,7 +204,7 @@ r2_c2 = dbc.Col([
                 ]
                 ),
 ], 
-className="m-0 p-0 mh-100 border border-primary" 
+className="m-0 p-0 mh-100" 
 )
 
 page = dbc.Container([
@@ -213,7 +213,7 @@ page = dbc.Container([
                 r1_c1,
                 r1_c2
         ],
-        className="m-0 p-0 border border-primary",
+        className="m-0 p-0",
         style = {"height" : "40%"}
         ),
 
@@ -221,12 +221,12 @@ page = dbc.Container([
                 r2_c1,
                 r2_c2
         ],
-        className="m-0 p-0 border border-success h",
+        className="m-0 p-0",
         style = {"height" : "60%"}
         )
 ], 
 fluid=True,
-className="m-0 p-0 border border-danger vh-100"
+className="m-0 p-0 vh-100"
 )
 
 class page2:
