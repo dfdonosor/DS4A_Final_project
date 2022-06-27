@@ -19,7 +19,7 @@ def register_callbacks(app):
         elif pathname == "/page-2":
             return page2().render()
         # If the user tries to reach a different page, return a 404 message
-        return dbc.Jumbotron(
+        return dbc.Alert(
             [
                 html.H1("404: Not found", className="text-danger"),
                 html.Hr(),
@@ -40,3 +40,12 @@ def register_callbacks(app):
             return "Not clicked."
         else:
             return f"Clicked {n} times."
+
+    @app.callback(
+    Output("aqueduct", "active"), 
+    Input("aqueduct", "n_clicks")
+    )
+    def toggle_state(n_aqueduct):
+        if n_aqueduct:
+            print(n_aqueduct)
+            return True

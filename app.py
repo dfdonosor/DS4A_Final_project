@@ -7,6 +7,8 @@ from callbacks import register_callbacks
 #    loaded_obj = pickle.load(f)
 
 app = Dash(__name__, update_title='Cargando...', external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True)
+server = app.server
+
 
 sidebar = html.Div(
     [
@@ -71,4 +73,4 @@ fluid=True,
 register_callbacks(app)
 
 if __name__ == "__main__":
-    app.run_server(port=8888,debug=True)
+    app.run_server(port=8050,debug=True)
