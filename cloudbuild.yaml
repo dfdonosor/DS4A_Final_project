@@ -3,4 +3,4 @@ steps:
   args: ['build', '-t', 'gcr.io/dash-app-182/github.com/dfdonosor/ds4a_final_project:$COMMIT_SHA', '.']
   
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', '-t', 'gcr.io/dash-app-182/github.com/dfdonosor/ds4a_final_project:$COMMIT_SHA']
+  args: ['push', 'gcr.io/dash-app-182/github.com/dfdonosor/ds4a_final_project:$COMMIT_SHA']
