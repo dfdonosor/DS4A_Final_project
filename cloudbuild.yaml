@@ -1,6 +1,9 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/dash-app-182/github.com/dfdonosor/ds4a_final_project:$SHORT_SHA', '.']
+  args: ['build', '-t', 'gcr.io/dash-app-182/github.com/dfdonosor/ds4a_final_project:$COMMIT_SHA', '.']
   
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', '-t', 'gcr.io/dash-app-182/github.com/dfdonosor/ds4a_final_project:$SHORT_SHA']
+  args: ['push', 'gcr.io/dash-app-182/github.com/dfdonosor/ds4a_final_project:$COMMIT_SHA']
+  
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['run', ,'deploy', 'dash-app-182', '--region=us-central1', '--platform=managed', '--image=gcr.io/dash-app-182/github.com/dfdonosor/ds4a_final_project:$COMMIT_SHA']
