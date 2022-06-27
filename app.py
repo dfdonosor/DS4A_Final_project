@@ -9,7 +9,6 @@ from callbacks import register_callbacks
 app = Dash(__name__, update_title='Cargando...', external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True)
 server = app.server
 
-
 sidebar = html.Div(
     [
         html.H2("Menu", className="display-4"),

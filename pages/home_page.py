@@ -5,7 +5,7 @@ import dash_bootstrap_components as dbc
 import matplotlib.pyplot as plt
 
 p1 = """
-This application has the purpose of showing the most important results that have been found between the result of the ICFES exam and access to the following services:
+This (change) application has the purpose of showing the most important results that have been found between the result of the ICFES exam and access to the following services:
 """
 
 p2 = """
