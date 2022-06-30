@@ -1,9 +1,11 @@
 import dash
-from dash import dcc, html, Input, Output, callback
+import pandas as pd
+from dash import dcc, html, Input, Output, State,callback
 from pages.home_page import homepage
 from pages.page_1 import page1
 from pages.page_2 import page2
 import dash_bootstrap_components as dbc
+from data.data import modelo_reg
 
 def register_callbacks(app):
         
@@ -49,3 +51,19 @@ def register_callbacks(app):
         if n_aqueduct:
             print(n_aqueduct)
             return True
+
+    @app.callback(
+        Output("kpi_result_model_reg", "children"),
+        Input("button_result","n_clicks"),
+        State("range-slider-internet","value"),
+        State("range-slider-gas","value"),
+        State("range-slider-dist","value"),
+        
+    )
+    def model_reg(btn, val_int, val_gas, val_dist):
+        data_input_df = pd.DataFrame({"KmDist" : [float(val_dist)], 
+                                    "INDICADOR_GAS_NATURAL" : float(val_gas), 
+                                    "INDICADOR_INTERNET" : float(val_int)})
+        prediction = str(round(float(modelo_reg.predict(data_input_df)), 2))
+        
+        return prediction

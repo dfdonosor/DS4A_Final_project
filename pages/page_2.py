@@ -1,4 +1,8 @@
 import os
+# importing sys
+import sys
+# adding Folder_2 to the system path
+sys.path.append('../data')
 from dash import Dash, callback, dcc, html, dash_table, Input, Output, State, MATCH, ALL
 import dash_bootstrap_components as dbc
 import matplotlib.pyplot as plt
@@ -9,6 +13,9 @@ from components.slider import Slider
 from components.description_element import DescriptionElement
 from components.button import Button 
 from components.kpi import KPI
+from data.data import df
+
+
 
 title_1 = SubTitle("Input data for regression or classification modeling")
 title_2 = SubTitle("Estimated score result after modeling")
@@ -19,14 +26,14 @@ description_range_slider_1 = DescriptionElement("Public service indicator x1")
 description_range_slider_2 = DescriptionElement("Public service indicator x2")
 description_range_slider_3 = DescriptionElement("Other important indicator")
 
-range_slider_1 = Slider("Indicator", "range-slider_1", (0, 20))
-range_slider_2 = Slider("Indicator", "range-slider_2", (0, 20))
-range_slider_3 = Slider("Indicator", "range-slider_3", (0, 20))
+range_slider_1 = Slider("Indicador internet", "range-slider-internet", 0.01,(float(df["INDICADOR_INTERNET"].min()), float(df["INDICADOR_INTERNET"].max())))
+range_slider_2 = Slider("Indicador gas natural", "range-slider-gas", 0.01,(float(df["INDICADOR_GAS_NATURAL"].min()), float(df["INDICADOR_GAS_NATURAL"].max())))
+range_slider_3 = Slider("Indicador distancia (km)", "range-slider-dist", 10,(float(df["KmDist"].min()), float(df["KmDist"].max())))
 
 description_button_result = DescriptionElement("Global ICFES score")
 button_result = Button("Estimated result", "button_result")
 
-kpi_result = KPI(50, "kpi_result_model", "Result")
+kpi_result = KPI(50, "kpi_result_model_reg", "Result")
 
 kpi_relation_1 = KPI(50, "kpi_relation_model_1", "Indicator 1", "s")
 kpi_relation_2 = KPI(50, "kpi_relation_model_2", "Indicator 2", "s")

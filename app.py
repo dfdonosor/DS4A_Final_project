@@ -6,7 +6,10 @@ from callbacks import register_callbacks
 #with open(r'data/consolidado_datos.pickle', 'rb') as f:
 #    loaded_obj = pickle.load(f)
 
-app = Dash(__name__, update_title='Cargando...', external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True)
+app = Dash(__name__, update_title='Cargando...', 
+            external_stylesheets=[dbc.themes.BOOTSTRAP], 
+            suppress_callback_exceptions=True,
+            meta_tags=[{'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}])
 server = app.server
 
 sidebar = html.Div(
