@@ -2,7 +2,6 @@ import os
 # importing sys
 import sys
 # adding Folder_2 to the system path
-sys.path.append('../data')
 from dash import Dash, callback, dcc, html, dash_table, Input, Output, State, MATCH, ALL
 import dash_bootstrap_components as dbc
 import matplotlib.pyplot as plt
@@ -13,9 +12,10 @@ from components.slider import Slider
 from components.description_element import DescriptionElement
 from components.button import Button 
 from components.kpi import KPI
-from data.data import df
+from data.data import DataApp
 
 
+df = DataApp.df
 
 title_1 = SubTitle("Input data for regression or classification modeling")
 title_2 = SubTitle("Estimated score result after modeling")

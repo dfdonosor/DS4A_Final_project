@@ -5,7 +5,9 @@ from pages.home_page import homepage
 from pages.page_1 import page1
 from pages.page_2 import page2
 import dash_bootstrap_components as dbc
-from data.data import modelo_reg
+from data.data import DataApp
+
+modelo_reg = DataApp.modelo_reg
 
 def register_callbacks(app):
         

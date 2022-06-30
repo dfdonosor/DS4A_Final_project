@@ -1,3 +1,7 @@
+import os
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname)
 from dash import Dash, dcc, html
 import dash_bootstrap_components as dbc
 #import dash_labs as dl

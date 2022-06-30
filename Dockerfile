@@ -2,6 +2,8 @@
 # https://hub.docker.com/_/python
 FROM python:3.8-slim-buster
 
+RUN apt-get update && apt-get -y upgrade
+RUN apt-get -y install libgomp1
 RUN pip3 install --upgrade pip
 
 # Allow statements and log messages to immediately appear in the Knative logs
@@ -20,4 +22,4 @@ RUN pip3 install gunicorn
 # For environments with multiple CPU cores, increase the number of workers
 # to be equal to the cores available.
 # Timeout is set to 0 to disable the timeouts of the workers to allow Cloud Run to handle instance scaling.
-CMD [ "gunicorn", "--workers=1", "--threads=1", "-b 0.0.0.0:8080", "app:server"]
+CMD [ "gunicorn", "--timeout", "1000", "--workers=4", "--threads=1", "-b 0.0.0.0:8080", "app:server"]
