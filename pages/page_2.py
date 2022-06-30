@@ -28,7 +28,7 @@ description_range_slider_3 = DescriptionElement("Other important indicator")
 
 range_slider_1 = Slider("Indicador internet", "range-slider-internet", 0.01,(float(df["INDICADOR_INTERNET"].min()), float(df["INDICADOR_INTERNET"].max())))
 range_slider_2 = Slider("Indicador gas natural", "range-slider-gas", 0.01,(float(df["INDICADOR_GAS_NATURAL"].min()), float(df["INDICADOR_GAS_NATURAL"].max())))
-range_slider_3 = Slider("Indicador distancia (km)", "range-slider-dist", 10,(float(df["KmDist"].min()), float(df["KmDist"].max())))
+range_slider_3 = Slider("Indicador distancia(km)", "range-slider-dist", 10,(float(df["KmDist"].min()), float(df["KmDist"].max())))
 
 description_button_result = DescriptionElement("Global ICFES score")
 button_result = Button("Estimated result", "button_result")
