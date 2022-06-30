@@ -1,5 +1,3 @@
-import os
-print("data.py", os.getcwd())
 import pandas as pd
 from pycaret.classification import *
 import statsmodels.api as sm
