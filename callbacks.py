@@ -6,6 +6,7 @@ from pages.page_1 import page1
 from pages.page_2 import page2
 import dash_bootstrap_components as dbc
 from data.data import DataApp
+from pycaret.classification import *
 
 modelo_reg = DataApp.modelo_reg
 
@@ -64,8 +65,29 @@ def register_callbacks(app):
     )
     def model_reg(btn, val_int, val_gas, val_dist):
         data_input_df = pd.DataFrame({"KmDist" : [float(val_dist)], 
-                                    "INDICADOR_GAS_NATURAL" : float(val_gas), 
-                                    "INDICADOR_INTERNET" : float(val_int)})
+                                    "INDICADOR_GAS_NATURAL" : [float(val_gas)], 
+                                    "INDICADOR_INTERNET" : [float(val_int)]})
         prediction = str(round(float(modelo_reg.predict(data_input_df)), 2))
         
         return prediction
+
+    @app.callback(
+        Output("kpi_result_model_classi", "children"),
+        Input("button_result","n_clicks"),
+        State("range-slider-internet","value"),
+        State("range-slider-gas","value"),
+        State("range-slider-dist","value"),
+        
+    )
+    def model_classi(btn, val_int, val_gas, val_dist):
+        data_input_df = pd.DataFrame({"KmDist" : [float(val_dist)], 
+                                    "INDICADOR_GAS_NATURAL" : float(val_gas), 
+                                    "INDICADOR_INTERNET" : float(val_int)})
+        prediction = predict_model(DataApp.modelo_classif, data = data_input_df)
+        result = float(prediction["Label"].values[0])
+        if result == 1:
+            return "Above the departmental average"
+        if result == 0:
+            return "Below the departmental average"
+        else:
+            return "Undefined"

@@ -12,8 +12,7 @@ from callbacks import register_callbacks
 
 app = Dash(__name__, update_title='Cargando...', 
             external_stylesheets=[dbc.themes.BOOTSTRAP], 
-            suppress_callback_exceptions=True,
-            meta_tags=[{'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}])
+            suppress_callback_exceptions=True)
 server = app.server
 
 sidebar = html.Div(

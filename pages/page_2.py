@@ -22,18 +22,20 @@ title_2 = SubTitle("Estimated score result after modeling")
 title_3 = SubTitle("Relationships between public services and ICFES Score")
 title_4 = SubTitle("Relationships between public services and ICFES Score")
 
-description_range_slider_1 = DescriptionElement("Public service indicator x1")
-description_range_slider_2 = DescriptionElement("Public service indicator x2")
-description_range_slider_3 = DescriptionElement("Other important indicator")
+description_range_slider_1 = DescriptionElement("INTERNET")
+description_range_slider_2 = DescriptionElement("NATURAL GAS")
+description_range_slider_3 = DescriptionElement("DISTANCE")
 
-range_slider_1 = Slider("Indicador internet", "range-slider-internet", 0.01,(float(df["INDICADOR_INTERNET"].min()), float(df["INDICADOR_INTERNET"].max())))
-range_slider_2 = Slider("Indicador gas natural", "range-slider-gas", 0.01,(float(df["INDICADOR_GAS_NATURAL"].min()), float(df["INDICADOR_GAS_NATURAL"].max())))
-range_slider_3 = Slider("Indicador distancia(km)", "range-slider-dist", 10,(float(df["KmDist"].min()), float(df["KmDist"].max())))
+range_slider_1 = Slider("Indicator internet", "range-slider-internet", 0.01,(float(df["INDICADOR_INTERNET"].min()), float(df["INDICADOR_INTERNET"].max())))
+range_slider_2 = Slider("Indicator natural gas", "range-slider-gas", 0.01,(float(df["INDICADOR_GAS_NATURAL"].min()), float(df["INDICADOR_GAS_NATURAL"].max())))
+range_slider_3 = Slider("Indicator distance(km)", "range-slider-dist", 10,(float(df["KmDist"].min()), float(df["KmDist"].max())))
 
-description_button_result = DescriptionElement("Global ICFES score")
+description_result_reg = DescriptionElement("Regression model")
+description_result_classi = DescriptionElement("Classification model")
 button_result = Button("Estimated result", "button_result")
 
-kpi_result = KPI(50, "kpi_result_model_reg", "Result")
+kpi_result_reg = KPI("", "kpi_result_model_reg", "Result", "s")
+kpi_result_classi = KPI("", "kpi_result_model_classi", "Result", "s")
 
 kpi_relation_1 = KPI(50, "kpi_relation_model_1", "Indicator 1", "s")
 kpi_relation_2 = KPI(50, "kpi_relation_model_2", "Indicator 2", "s")
@@ -52,16 +54,16 @@ r1_c1 = dbc.Col([
                         dbc.Col([
                                 description_range_slider_1.display()
                         ],
-                        width=6,
+                        width=4,
                         ),
 
                         dbc.Col([
                                 range_slider_1.display()
                         ],
-                        width=6,
+                        width=8,
                         ),
                 ], 
-                className='p-0 m-0',
+                className='p-0 m-0 container d-flex align-items-center justify-content-center',
                 style = {"height" : "30%"}
                 ),
                 
@@ -70,16 +72,16 @@ r1_c1 = dbc.Col([
                         dbc.Col([
                                 description_range_slider_2.display()
                                 ],
-                                width=6,
+                                width=4,
                                 ),
 
                                 dbc.Col([
                                         range_slider_2.display()
                                 ],
-                                width=6,
+                                width=8,
                                 ),
                 ], 
-                className='p-0 m-0',
+                className='p-0 m-0 container d-flex align-items-center justify-content-center',
                 style = {"height" : "30%"}
                 ),
 
@@ -87,16 +89,16 @@ r1_c1 = dbc.Col([
                         dbc.Col([
                                 description_range_slider_3.display()
                         ],
-                        width=6,
+                        width=4,
                         ),
                                         
                         dbc.Col([
                                 range_slider_3.display()
                         ],
-                        width=6,
+                        width=8,
                         ),
                 ], 
-                className='p-0 m-0',
+                className='p-0 m-0 container d-flex align-items-center justify-content-center',
                 style = {"height" : "30%"}
                 ),
 
@@ -113,29 +115,46 @@ r1_c2 = dbc.Col([
 
                 dbc.Row([
                         dbc.Col([
-                                description_button_result.display()
-                        ],
-                        width=6,
-                        ),
-
-                        dbc.Col([
                                 button_result.display()
                         ],
-                        width=6,
+                        width=12,
                         className='p-2 m-0'
                         ),
 
                         ], 
                         className='p-0 m-0 align-items-center',
-                        style = {"height" : "50%"}
+                        style = {"height" : "20%"}
                         ),
 
                 dbc.Row([
                         dbc.Col([
-                                kpi_result.display()
+                                description_result_reg.display()
+                        ],
+                        width=6,
+                        ),
+
+                        dbc.Col([
+                                kpi_result_reg.display()
+                        ],
+                        width=6,
+                        className="d-flex justify-content-center align-items-center h-75")
+                        ], 
+                        className='p-0 m-0 align-items-center', 
+                        justify="center",
+                        style = {"height" : "30%"}),
+
+                dbc.Row([
+                        dbc.Col([
+                                description_result_classi.display()
+                        ],
+                        width=6,
+                        ),
+
+                        dbc.Col([
+                                kpi_result_classi.display()
                                 ],
-                                width=12,
-                                className="d-flex justify-content-center align-items-center h-100")
+                                width=6,
+                                className="d-flex justify-content-center align-items-center h-75")
                         ], 
                         className='p-0 m-0 align-items-center', 
                         justify="center",
@@ -221,7 +240,7 @@ page = dbc.Container([
                 r1_c2
         ],
         className="m-0 p-0",
-        style = {"height" : "40%"}
+        style = {"height" : "50%"}
         ),
 
         dbc.Row([
@@ -229,7 +248,7 @@ page = dbc.Container([
                 r2_c2
         ],
         className="m-0 p-0",
-        style = {"height" : "60%"}
+        style = {"height" : "50%"}
         )
 ], 
 fluid=True,
