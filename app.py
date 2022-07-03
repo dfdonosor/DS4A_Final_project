@@ -15,6 +15,8 @@ app = Dash(__name__, update_title='Cargando...',
             suppress_callback_exceptions=True)
 server = app.server
 
+app.title = "DS4A Icfes predictor app - T182"
+
 sidebar = html.Div(
     [
         html.H2("Menu", className="display-4"),
@@ -26,7 +28,7 @@ sidebar = html.Div(
             [
                 dbc.NavLink("Home", href="/", active="exact"),
                 dbc.NavLink("Page 1", href="/page-1", active="exact"),
-                dbc.NavLink("Page 2", href="/page-2", active="exact"),
+                dbc.NavLink("Prediction", href="/prediction", active="exact"),
             ],
             vertical=True,
             pills=True,
@@ -40,10 +42,11 @@ app.layout = dbc.Container([
     dbc.Row(
         className="app-title",
         children=[dbc.Col(
-            html.Img(src="https://colombia5-forum.ds4a.com/uploads/default/original/1X/9486fbcdb19b25244ce16ec41ca0ee998cf31e81.png", 
+            html.Img(src=app.get_asset_url('logo.svg'), 
                     style={'height':'100%', 'width':'100%'}),
             width=2,
-            align="center"
+            align="center",
+            className="py-0 my-0 align-self-center col-2"
         ),
 
         dbc.Col(

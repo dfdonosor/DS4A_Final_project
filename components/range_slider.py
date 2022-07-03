@@ -14,7 +14,7 @@ class RangerSlider:
         layout =  html.Div([
                         html.P(self.title),
                         dcc.RangeSlider(min = min_value, max = max_value, value=[min_value, max_value], id = self.id_slider, 
-                                        tooltip={"placement": "bottom", "always_visible": True})
+                                        tooltip={"placement": "bottom", "always_visible": True}, marks=None)
                         ], 
                         className='align-middle  p-1 m-1 shadow bg-body rounded"',
                         )

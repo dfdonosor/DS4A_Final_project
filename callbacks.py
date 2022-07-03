@@ -21,7 +21,7 @@ def register_callbacks(app):
             return homepage().render()
         elif pathname == "/page-1":
             return page1().render()
-        elif pathname == "/page-2":
+        elif pathname == "/prediction":
             return page2().render()
         # If the user tries to reach a different page, return a 404 message
         return dbc.Alert(
@@ -47,15 +47,6 @@ def register_callbacks(app):
             return f"Clicked {n} times."
 
     @app.callback(
-    Output("aqueduct", "active"), 
-    Input("aqueduct", "n_clicks")
-    )
-    def toggle_state(n_aqueduct):
-        if n_aqueduct:
-            print(n_aqueduct)
-            return True
-
-    @app.callback(
         Output("kpi_result_model_reg", "children"),
         Input("button_result","n_clicks"),
         State("range-slider-internet","value"),
@@ -67,12 +58,13 @@ def register_callbacks(app):
         data_input_df = pd.DataFrame({"KmDist" : [float(val_dist)], 
                                     "INDICADOR_GAS_NATURAL" : [float(val_gas)], 
                                     "INDICADOR_INTERNET" : [float(val_int)]})
-        prediction = str(round(float(modelo_reg.predict(data_input_df)), 2))
+        prediction = str(round(float(modelo_reg.predict(data_input_df))))
         
         return prediction
 
     @app.callback(
         Output("kpi_result_model_classi", "children"),
+        Output("kpi_result_model_classi", "style"),
         Input("button_result","n_clicks"),
         State("range-slider-internet","value"),
         State("range-slider-gas","value"),
@@ -86,8 +78,8 @@ def register_callbacks(app):
         prediction = predict_model(DataApp.modelo_classif, data = data_input_df)
         result = float(prediction["Label"].values[0])
         if result == 1:
-            return "Above the departmental average"
+            return "Above the departmental average", {"background-color": "#198754", "color" : "white"}
         if result == 0:
-            return "Below the departmental average"
+            return "Below the departmental average", {"background-color": "#df4759", "color" : "white"}
         else:
             return "Undefined"

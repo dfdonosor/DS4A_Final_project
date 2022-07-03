@@ -3,109 +3,177 @@ os.chdir(os.path.dirname(os.path.abspath(__file__))) #Ubicamos el interprete en 
 from dash import Dash, callback, dcc, html, dash_table, Input, Output, State, MATCH, ALL
 import dash_bootstrap_components as dbc
 import matplotlib.pyplot as plt
+from components.kpi import KPI
+from components.Table import Table
 
-p1 = """
-This (change x2) application has the purpose of showing the most important results that have been found between the result of the ICFES exam and access to the following services:
+kpi_reg_procces = KPI("", "kpi_model_reg", "Process", "s")
+kpi_reg_r_square = KPI("0.441", "kpi_reg_r_square", "R-square", "s")
+kpi_classi_procces = KPI("", "kpi_model_classi", "Process", "s")
+
+intro_txt = """This application is the result of a complete analysis of the relationship between **public services** and **ICFES**
+(Colombian Institute for the Promotion of Higher Education) score,
+the application has an **interactive data visualization** that allows to navigate through the data and understand the relationships,
+in addition to this in the **prediction section** there are models that from input data provided by the user predicts the average ICFES
+score that the municipality will have with those characteristics. This tool is extremely powerful to find ways to improve the performance
+of the results for a municipality. 
 """
 
-p2 = """
-On page 1 the most important results are shown, represented by interactive graphs that will allow the user to search and explore the information.
-On page 2, a predictive model is structured that, according to some input variables given by the user, will estimate the ICFES score that will be obtained.
+background_txt_1 = """
+The **ICFES** (Colombian Institute for the Promotion of Higher Education) conducts biannual knowledge tests for students in grade 11. 
+These results allow them to establish a selfevaluation of the quality of the education provided and the resources allocated for this purpose. 
 """
 
-internet_detail = """
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut bibendum turpis. Fusce nibh enim, fringilla vel tincidunt et, commodo vitae tortor. 
-Suspendisse nec nunc interdum, posuere enim et, sagittis mauris. Proin congue lectus leo, sit amet lacinia dolor eleifend eu. 
-
-Phasellus ac feugiat odio.
+background_txt_2 = """
+**Our proposal** focuses on the impact of access to different public services (Aqueduct, Sewerage, Energy, Gas, and Internet) on performance in the ICFES tests.
 """
 
-aqueduct_detail = """
-Vivamus blandit augue sed risus vulputate viverra. Etiam at eros ullamcorper, iaculis massa a, malesuada nulla. 
+data_txt = """
+We took data from the department of **Cundinamarca**,
+due to its high number of municipalities **(116)** and the
+high diversity among them, these data were delimited
+to the years **2019 and 2020**.
 """
 
-sewerage_detail = """
-Vestibulum facilisis pulvinar sagittis. Fusce interdum imperdiet metus, ac finibus diam commodo sed. Ut ut condimentum diam, ut tincidunt velit. 
-Aliquam purus turpis, congue consectetur velit eget, pellentesque dignissim nibh. Cras tellus libero, bibendum id finibus a, sodales gravida arcu.
+regression_model_txt = """
+We split the data in 
+and testing data (80%,
+20% respectively)
 """
-energy_gas_detail = """
-Vivamus vehicula est lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-Aliquam tincidunt erat in lorem cursus facilisis. Aliquam quis lacus tellus. Praesent nec porttitor tellus. Donec malesuada maximus nisi eu pharetra. 
-Sed ligula arcu, sodales eget mauris nec, fringilla interdum dolor. Nunc id faucibus enim. Nunc nec faucibus dui. Pellentesque rutrum pharetra justo eget sollicitudin. 
+kpi_reg_procces.kpi = regression_model_txt
+reg_table = Table(["Feature", "Coef"])
+reg_table.append_row(["KmDist","-0.10"])
+reg_table.append_row(["Internet","137.8"])
+reg_table.append_row(["Gas","-53.3"])
+
+classification_model_txt = """
+We use XGBoost, to
+classify into two
+groups the Icfes
+scores, high score and
+low score (0 or 1), the
+separation point is
+246.
 """
+kpi_classi_procces.kpi = classification_model_txt
+classi_table = Table(["Metric", "Score"])
+classi_table.append_row(["Accuracy","8"])
+classi_table.append_row(["Prec.","8"])
+classi_table.append_row(["AUC","8"])
+classi_table.append_row(["F1","7"])
+classi_table.append_row(["Recall","7"])
 
-
-services = dbc.ListGroup([
-                dbc.ListGroupItem("Internet",className="list-group-item list-group-item-action w-100", id="internet", n_clicks=0),
-                dbc.ListGroupItem("Aqueduct",className="list-group-item list-group-item-action w-100", id="aqueduct", n_clicks=0),
-                dbc.ListGroupItem("Sewerage",className="list-group-item list-group-item-action w-100", id="sewerage", n_clicks=0),
-                dbc.ListGroupItem("Electric Energy and Natural Gas",className="list-group-item list-group-item-action w-100", id="energy-gas", n_clicks=0),
-
-        ],className="list-group")
-
-explained_services = html.Div([
-                dbc.Collapse(
-                        dbc.Card(children=internet_detail, body=True, className="w-100 h-100"),
-                        className="w-100 h-100",
-                        id="collapse-internet",
-                        is_open=True,
-                    ),
-
-                dbc.Collapse(
-                        dbc.Card(children=internet_detail, body=True, className="w-100 h-100"),
-                        className="w-100 h-100",
-                        id="collapse-aqueduct",
-                        is_open=False,
-                    ),
-
-                dbc.Collapse(
-                        dbc.Card(children=internet_detail, body=True, className="w-100 h-100"),
-                        className="w-100 h-100",
-                        id="collapse-sewerage",
-                        is_open=False,
-                    ),
-
-                dbc.Collapse(
-                        dbc.Card(children=internet_detail, body=True, className="w-100 h-100"),
-                        className="w-100 h-100",
-                        id="collapse-energy-gas",
-                        is_open=False,
-                    ),
-
-                
-                ],className="w-100 h-100")
-      
-
-page = dbc.Container([
-
-        dbc.Row(
-                html.P(p1, className="px-0"),
-                className="m-2 p-2 w-75"
-        ),
-
-        dbc.Row([
+background = dbc.Row([
+            dbc.Row([
                 dbc.Col([
-                        services
-                ],
-                width=4
-                ),
+                    html.Img(src="assets\icfes.svg", className="img-fluid h-100 w-100"),
+                ], width=1),
 
                 dbc.Col([
-                        explained_services
+                    dcc.Markdown(background_txt_1),
+                ], width=6)
+               
+            ]),
+
+            dbc.Row([
+               dbc.Col([
+                    dcc.Markdown(background_txt_2),
+                ], width=6),
+
+                dbc.Col([
+                    html.Img(src="assets\chart.svg", className="img-fluid h-75 w-75")
+                ], width=1)
+            ]),
+        ],
+        className="m-0 p-0",
+        )
+
+data = dbc.Row([
+               dcc.Markdown(data_txt),
+               html.Img(src="assets\diagram.svg", className="img-fluid")
+        ],
+        className="m-0 p-0",
+        )
+
+regression_model = dbc.Row([
+                dbc.Col([
+
+                    dbc.Row([
+                    kpi_reg_procces.display()
+                    ]),
+
+                    dbc.Row([
+                    reg_table.display()
+                    ]),
+
+                    dbc.Row([
+                    dcc.Markdown(regression_model_txt)
+                    ]),
+
+                ], width=3),
+
+                dbc.Col([
+                    dcc.Markdown(background_txt_1),
+                ], width=8)
+               
+            ])
+
+classification_model = dbc.Row([
+                dbc.Col([
+
+                    dbc.Row([
+                    kpi_classi_procces.display()
+                    ]),
+
+                    dbc.Row([
+                    classi_table.display()
+                    ]),
+
+                ], width=3),
+
+                dbc.Col([
+                    dcc.Markdown(background_txt_1),
+                ], width=8)
+               
+            ])
+
+
+page = html.Div([
+
+        dcc.Markdown(intro_txt),
+
+    dbc.Accordion(
+        [
+            dbc.AccordionItem(
+                [
+                    background,
                 ],
-                width=6
-                ),
+                title="BACKGROUND",
+            ),
+            dbc.AccordionItem(
+                [
+                    data,
+                ],
+                title="DATA",
+            ),
 
-        ], className="m-2 p-2 w-75"),
+            dbc.AccordionItem(
+                [
+                    regression_model,
+                ],
+                title="REGRESSION MODEL",
+            ),
 
-        dbc.Row(
-                html.P(p2, className="px-0"),
-                className="m-2 p-2 w-75"
-        ),
-        ], 
-
-fluid=True,
-className="m-0 p-5 vh-100 justify-content-md-center")
+            dbc.AccordionItem(
+                [
+                    classification_model,
+                ],
+                title="CLASSIFICATION MODEL",
+            ),
+        ],
+    ),
+    ],
+    className="p-5 m-0 align-items-center justify-content-center text-start text-wrap lh-sm w-100 fs-4",
+)
 
 class homepage:
         def render(self):
