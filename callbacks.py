@@ -3,7 +3,7 @@ import pandas as pd
 from dash import dcc, html, Input, Output, State,callback
 from pages.home_page import homepage
 from pages.page_1 import page1
-from pages.page_2 import page2
+from pages.prediction_page import prediction
 import dash_bootstrap_components as dbc
 from data.data import DataApp
 from pycaret.classification import *
@@ -22,7 +22,7 @@ def register_callbacks(app):
         elif pathname == "/page-1":
             return page1().render()
         elif pathname == "/prediction":
-            return page2().render()
+            return prediction().render()
         # If the user tries to reach a different page, return a 404 message
         return dbc.Alert(
             [

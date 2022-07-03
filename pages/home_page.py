@@ -99,39 +99,38 @@ regression_model = dbc.Row([
 
                     dbc.Row([
                     kpi_reg_procces.display()
-                    ]),
+                    ], className="m-2 p-2"),
 
                     dbc.Row([
                     reg_table.display()
-                    ]),
+                    ], className="m-2 p-2"),
 
                     dbc.Row([
-                    dcc.Markdown(regression_model_txt)
-                    ]),
+                    kpi_reg_r_square.display()
+                    ], className="m-2 p-2"),
 
                 ], width=3),
 
                 dbc.Col([
-                    dcc.Markdown(background_txt_1),
+                    html.Img(src=r"assets\residual_fitted.png", className="img-fluid h-100 w-100"),
                 ], width=8)
-               
-            ])
+            ], className="m-2 p-2")
 
 classification_model = dbc.Row([
                 dbc.Col([
 
                     dbc.Row([
                     kpi_classi_procces.display()
-                    ]),
+                    ], className="m-2 p-2"),
 
                     dbc.Row([
                     classi_table.display()
-                    ]),
+                    ], className="m-2 p-2"),
 
                 ], width=3),
 
                 dbc.Col([
-                    dcc.Markdown(background_txt_1),
+                    html.Img(src=r"assets\roc_clasification.png", className="img-fluid h-100 w-100"),
                 ], width=8)
                
             ])

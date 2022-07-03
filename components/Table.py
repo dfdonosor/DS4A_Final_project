@@ -14,7 +14,7 @@ class Table:
         for name in columns_names:
             names.append(html.Th(name))
 
-        table_header = [html.Thead(html.Tr(names))]
+        table_header = [html.Thead(html.Tr(names), style={"background-color": "#2E487E", "color" : "white"})]
 
         return table_header
  

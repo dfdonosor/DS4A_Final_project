@@ -25,3 +25,14 @@
     color: whitesmoke;
 }
 
+.accordion-button {
+    font-size: large;
+    font-weight: bold;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #2E487E;
+    font-weight: bold;
+    color: white;
+}
+

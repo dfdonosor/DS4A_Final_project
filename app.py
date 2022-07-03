@@ -22,13 +22,13 @@ sidebar = html.Div(
         html.H2("Menu", className="display-4"),
         html.Hr(),
         html.P(
-            "Select the option you want to review", className="lead"
+            "Select the option you want to review", className="lead fs-5"
         ),
         dbc.Nav(
             [
-                dbc.NavLink("Home", href="/", active="exact"),
-                dbc.NavLink("Page 1", href="/page-1", active="exact"),
-                dbc.NavLink("Prediction", href="/prediction", active="exact"),
+                dbc.NavLink("Home", href="/", active="exact", className="fs-4"),
+                dbc.NavLink("Page 1", href="/page-1", active="exact", className="fs-4"),
+                dbc.NavLink("Prediction", href="/prediction", active="exact", className="fs-4"),
             ],
             vertical=True,
             pills=True,

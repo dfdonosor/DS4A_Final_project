@@ -39,7 +39,7 @@ kpi_result_classi = KPI("", "kpi_result_model_classi", "Result", "s")
 r1_c1 = dbc.Col([
                 dbc.Row(
                         title_1.display(),
-                        className="m-0 p-0 align-items-center",
+                        className="m-0 p-2 align-items-center",
                         style = {"height" : "10%"}
                 ),
                 
@@ -56,7 +56,7 @@ r1_c1 = dbc.Col([
                         width=8,
                         ),
                 ], 
-                className='p-0 m-0 d-flex align-items-center justify-content-center',
+                className='p-2 m-0 d-flex align-items-center justify-content-center',
                 style = {"height" : "30%"}
                 ),
                 
@@ -73,7 +73,7 @@ r1_c1 = dbc.Col([
                                 width=8,
                                 ),
                 ], 
-                className='p-0 m-0 container d-flex align-items-center justify-content-center',
+                className='p-2 m-0 container d-flex align-items-center justify-content-center',
                 style = {"height" : "30%"}
                 ),
 
@@ -90,18 +90,18 @@ r1_c1 = dbc.Col([
                         width=8,
                         ),
                 ], 
-                className='p-0 m-0 container d-flex align-items-center justify-content-center',
+                className='p-2 m-0 container d-flex align-items-center justify-content-center',
                 style = {"height" : "30%"}
                 ),
 
         ],
-        className='p-0 m-0 h-100'
+        className='p-2 m-0 h-100'
         )           
 
 r1_c2 = dbc.Col([
                 dbc.Row(
                         title_2.display(),
-                        className="m-0 p-0 align-items-center",
+                        className="m-0 p-2 align-items-center",
                         style = {"height" : "10%"}
                 ),
 
@@ -114,7 +114,7 @@ r1_c2 = dbc.Col([
                         ),
 
                         ], 
-                        className='p-0 m-0 align-items-center',
+                        className='p-2 m-0 align-items-center',
                         style = {"height" : "20%"}
                         ),
 
@@ -131,7 +131,7 @@ r1_c2 = dbc.Col([
                         width=6,
                         className="d-flex justify-content-center align-items-center h-75")
                         ], 
-                        className='p-0 m-0 align-items-center', 
+                        className='p-2 m-0 align-items-center', 
                         justify="center",
                         style = {"height" : "30%"}),
 
@@ -148,11 +148,11 @@ r1_c2 = dbc.Col([
                                 width=6,
                                 className="d-flex justify-content-center align-items-center h-75")
                         ], 
-                        className='p-0 m-0 align-items-center', 
+                        className='p-2 m-0 align-items-center', 
                         justify="center",
                         style = {"height" : "40%"})
         ], 
-        className="m-0 p-0 mh-100"
+        className="m-0 p-2 mh-100"
         )
 
 
@@ -162,22 +162,14 @@ page = dbc.Container([
                 r1_c1,
                 r1_c2
         ],
-        className="m-0 p-0",
-        style = {"height" : "70%"}
+        className="m-0 p-2 h-75",
         ),
-
-        dbc.Row([
-                
-        ],
-        className="m-0 p-0",
-        style = {"height" : "30%"}
-        )
 ], 
 fluid=True,
-className="m-0 p-0 vh-100"
+className="m-0 p-2 vh-100"
 )
 
-class page2:
+class prediction:
         def render(self):
                 return page
         
