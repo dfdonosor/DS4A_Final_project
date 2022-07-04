@@ -56,11 +56,11 @@ separation point is
 """
 kpi_classi_procces.kpi = classification_model_txt
 classi_table = Table(["Metric", "Score"])
-classi_table.append_row(["Accuracy","8"])
-classi_table.append_row(["Prec.","8"])
-classi_table.append_row(["AUC","8"])
-classi_table.append_row(["F1","7"])
-classi_table.append_row(["Recall","7"])
+classi_table.append_row(["Accuracy","0.6739"])
+classi_table.append_row(["Prec.","0.6552"])
+classi_table.append_row(["AUC","0.7330"])
+classi_table.append_row(["F1","0.7170"])
+classi_table.append_row(["Recall","0.7917"])
 
 background = dbc.Row([
             dbc.Row([

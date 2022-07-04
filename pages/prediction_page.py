@@ -27,7 +27,7 @@ description_range_slider_3 = DescriptionElement("DISTANCE")
 
 range_slider_1 = Slider("Indicator internet", "range-slider-internet", 0.01,(0, 1))
 range_slider_2 = Slider("Indicator natural gas", "range-slider-gas", 0.01,(0, 1))
-range_slider_3 = Slider("Indicator distance(km)", "range-slider-dist", 10,(float(df["KmDist"].min()), float(df["KmDist"].max())))
+range_slider_3 = Slider("Indicator distance(km)", "range-slider-dist", 1,(float(df["KmDist"].min()), float(df["KmDist"].max())))
 
 description_result_reg = DescriptionElement("Regression model")
 description_result_classi = DescriptionElement("Classification model")
