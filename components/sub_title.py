@@ -5,5 +5,5 @@ class SubTitle:
         self.label = label
 
     def display(self):
-        layout = html.H4(self.label, className="p-2 m-0")
+        layout = html.H3(self.label, className="p-2 m-0")
         return layout

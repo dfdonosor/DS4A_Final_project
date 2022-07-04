@@ -20,3 +20,19 @@
     border-radius: 1vh;
 }
 
+.list-group-item.active{
+    background-color: #2E487E !important;
+    color: whitesmoke;
+}
+
+.accordion-button {
+    font-size: large;
+    font-weight: bold;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #2E487E;
+    font-weight: bold;
+    color: white;
+}
+

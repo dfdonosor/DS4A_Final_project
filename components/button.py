@@ -11,7 +11,7 @@ class Button:
         layout =  html.Div(
             [
                 dbc.Button(
-                    self.text, color="info", id=self.id_button, size="lg", className="mx-auto", n_clicks=0, style={"background-color": "#2E487E", "color" : "white"}
+                    self.text, color="info", id=self.id_button, size="lg", className="mx-auto fs-3 text-white fw-bold", n_clicks=0, style={"background-color": "#2E487E"}
                 )
             ],
             className="d-grid gap-2 col-6 mx-auto"
