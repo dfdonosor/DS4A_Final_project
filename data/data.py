@@ -6,10 +6,14 @@ from mimetypes import init
 import pandas as pd
 from pycaret.classification import *
 import statsmodels.api as sm
+import geopandas
+import json
 
 class DataApp:
     #Open the consolodida_datos
     df = pd.read_pickle("consolidado_datos.pickle")
+
+    
     #Open the modelo_reg
     modelo_reg = sm.load("modelo_reg.pickle")
     #Open the modelo_clasificacion
