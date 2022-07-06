@@ -19,7 +19,7 @@ def register_callbacks(app):
     def render_page_content(pathname):
         if pathname == "/":
             return homepage().render()
-        elif pathname == "/page-1":
+        elif pathname == "/data_visualization":
             return page1().render()
         elif pathname == "/prediction":
             return prediction().render()

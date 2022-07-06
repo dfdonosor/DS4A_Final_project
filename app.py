@@ -27,7 +27,7 @@ sidebar = html.Div(
         dbc.Nav(
             [
                 dbc.NavLink("Home", href="/", active="exact", className="fs-4"),
-                dbc.NavLink("Page 1", href="/page-1", active="exact", className="fs-4"),
+                dbc.NavLink("Data Visualization", href="/data_visualization", active="exact", className="fs-4"),
                 dbc.NavLink("Prediction", href="/prediction", active="exact", className="fs-4"),
             ],
             vertical=True,
