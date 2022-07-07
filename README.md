@@ -5,9 +5,9 @@ This application is the result of a complete analysis of the relationship betwee
 Live application demo: https://dash-app-182-z45ynaapnq-uc.a.run.app
 
 Members: 
-Andres Maldonado
-Brayan Aroca
-Daniel Donoso
-Felipe Ramírez
-Nataly Tinoco
+Andres Maldonado,
+Brayan Aroca,
+Daniel Donoso,
+Felipe Ramírez,
+Nataly Tinoco,
 Nicolas Acevedo
